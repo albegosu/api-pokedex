@@ -18,6 +18,10 @@ const colors = {
 
 // ¡¡¡¡CONSULTA A LA API!!!!
 
+const button = document.getElementById('button');
+button.addEventListener('click', getPokemons());
+
+
 /// ARRAY VACÍO PARA IR METIENDO POKEMONS
 let pokemons = [];
 
@@ -41,9 +45,6 @@ async function getPokemons() {
 		}	
 	}
 }
-
-getPokemons();
-
 
 // PASAMOS POR PARÁMETRO LA VARIABLE QUE RECOGE EL RESPONSE.JSON
 function createCard(pokemon) {
