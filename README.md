@@ -19,14 +19,9 @@ CSS
 
 JS
 
-la API que se usará es:
+la API que se usará es: pokeapi.co
 
-pokeapi.co
-
-Deberás crear createPokemonCard: se encargará de
-
-Traer el nombre del pokemon
-el id
-el tipo de pokemon, este será útil para hacer match con el fondo que debe tener cada pokemon
-
-con esta información podrás construir la card de cada uno de ellos.
+Deberás crear createPokemonCard:
+Nombre del pokemon
+id
+tipo de pokemon, este será útil para hacer match con el fondo que debe tener cada pokemon
