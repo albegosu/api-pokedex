@@ -1,4 +1,4 @@
-// const pokemon_count = 150
+// COLORS FOR TYPES BG
 const colors = {
     fire: '#FDDFDF',
     grass: '#DEFDE0',
@@ -16,13 +16,9 @@ const colors = {
 	normal: '#F5F5F5'
 }
 
-// ¡¡¡¡CONSULTA A LA API!!!!
-
-/// ARRAY VACÍO PARA IR METIENDO POKEMONS
 let pokemons = [];
 
-// FUNCIÓN LLAMADA A LA API
-
+//API
 async function getPokemons() {
 	for (let i = 0; i < 50; i++) {
 		try {
@@ -44,55 +40,44 @@ async function getPokemons() {
 
 getPokemons()
 
-// PASAMOS POR PARÁMETRO LA VARIABLE QUE RECOGE EL RESPONSE.JSON
+//CREATE COMPONENTS
+
 function createCard(pokemon) {
 
 	const poke_container = document.getElementById('poke-container');
 
-	//MAPEADO HASTA LA INFO DE TIPO DE POKEMON
 	const pokeTypes = pokemon.types.map(type => type.type.name);
-	//ASIGNAR ÚNICAMENTE PRIMER VALOR DEL MAPEO ENCONTRADO
 	const type = pokeTypes[0];
-	//ASIGNAR VALOR CON TIPO (CTE. COLORES)
 	const color = colors[type];
-	
 
-	//CONTENEDOR DE CADA POKECARD
 	let containerPokemon = document.createElement('div');
 	containerPokemon.classList.add('pokemon');
-	//asinado color personalizado con type
 	containerPokemon.style.backgroundColor = color;
 	poke_container.appendChild(containerPokemon);
 
-		//CONTENEDOR IMG	
-		let containerImg = document.createElement('div');
-		containerPokemon.appendChild(containerImg);
+	let containerImg = document.createElement('div');
+	containerPokemon.appendChild(containerImg);
 
-			//IMG
-			let img = document.createElement('img');
-			img.src = pokemon.sprites.front_default;
-			img.classList.add('img-container');
-			containerImg.appendChild(img);
+	let img = document.createElement('img');
+	img.src = pokemon.sprites.front_default;
+	img.classList.add('img-container');
+	containerImg.appendChild(img);
 
-		//CONTENEDOR INFO
-		let info = document.createElement('div');
-		info.classList.add('info');
-		containerPokemon.appendChild(info);
+	let info = document.createElement('div');
+	info.classList.add('info');
+	containerPokemon.appendChild(info);
 
-				//ORDER
-				let order = document.createElement('p');
-				order.classList.add('number');
-				order.textContent = `# ${pokemon.id.toString().padStart(3, '0')}`;
-				info.appendChild(order);
-			
-				//NAME
-				let nameText = document.createElement('p');
-				nameText.classList.add('name')
-				nameText.textContent = pokemon.name;
-				info.appendChild(nameText);
+	let order = document.createElement('p');
+	order.classList.add('number');
+	order.textContent = `# ${pokemon.id.toString().padStart(3, '0')}`;
+	info.appendChild(order);
 
-				//TYPE
-				let pokeType = document.createElement('p');
-				pokeType.textContent = `Type: ${type}`;
-				info.appendChild(pokeType);
+	let nameText = document.createElement('p');
+	nameText.classList.add('name')
+	nameText.textContent = pokemon.name;
+	info.appendChild(nameText);
+
+	let pokeType = document.createElement('p');
+	pokeType.textContent = `Type: ${type}`;
+	info.appendChild(pokeType);
 }
